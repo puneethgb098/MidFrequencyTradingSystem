@@ -1,0 +1,242 @@
+/* Custom Styles for Trading System Dashboard */
+
+:root {
+    --primary-color: #0d6efd;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #0dcaf0;
+    --dark-color: #212529;
+    --light-color: #f8f9fa;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    margin-bottom: 1.5rem;
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    font-weight: 600;
+}
+
+/* Status Indicator */
+#statusIndicator {
+    cursor: default;
+}
+
+#statusIndicator.stopped {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+#statusIndicator.running {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+#statusIndicator.starting {
+    background-color: var(--warning-color);
+    border-color: var(--warning-color);
+    color: var(--dark-color);
+}
+
+/* Performance Cards */
+.card.bg-primary {
+    background: linear-gradient(135deg, var(--primary-color), #0b5ed7);
+}
+
+.card.bg-success {
+    background: linear-gradient(135deg, var(--success-color), #157347);
+}
+
+.card.bg-info {
+    background: linear-gradient(135deg, var(--info-color), #0aa2c0);
+}
+
+.card.bg-warning {
+    background: linear-gradient(135deg, var(--warning-color), #e6ac00);
+    color: var(--dark-color) !important;
+}
+
+/* Progress Bars */
+.progress {
+    height: 8px;
+    border-radius: 4px;
+}
+
+.progress-bar {
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+/* Tables and Lists */
+.table {
+    font-size: 0.875rem;
+}
+
+.table th {
+    border-top: none;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+/* Strategy Cards */
+.strategy-card {
+    border-left: 4px solid var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.strategy-card.running {
+    border-left-color: var(--success-color);
+}
+
+.strategy-card.stopped {
+    border-left-color: var(--danger-color);
+}
+
+/* Position Cards */
+.position-long {
+    border-left: 4px solid var(--success-color);
+}
+
+.position-short {
+    border-left: 4px solid var(--danger-color);
+}
+
+/* Trade Entries */
+.trade-buy {
+    color: var(--success-color);
+    font-weight: 600;
+}
+
+.trade-sell {
+    color: var(--danger-color);
+    font-weight: 600;
+}
+
+/* Log Entries */
+.log-entry {
+    padding: 0.25rem 0;
+    border-bottom: 1px solid #eee;
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+}
+
+.log-entry:last-child {
+    border-bottom: none;
+}
+
+.log-info {
+    color: var(--info-color);
+}
+
+.log-warning {
+    color: var(--warning-color);
+}
+
+.log-error {
+    color: var(--danger-color);
+}
+
+.log-success {
+    color: var(--success-color);
+}
+
+/* Chart Container */
+.chart-container {
+    position: relative;
+    height: 300px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card-body h3 {
+        font-size: 1.5rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1rem;
+    }
+    
+    .btn-group {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn-group .btn {
+        margin-bottom: 0.25rem;
+    }
+}
+
+/* Animation */
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.updating {
+    animation: pulse 1s infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Utility Classes */
+.text-monospace {
+    font-family: 'Courier New', monospace;
+}
+
+.font-weight-semibold {
+    font-weight: 600;
+}
+
+.border-left-primary {
+    border-left: 4px solid var(--primary-color);
+}
+
+.border-left-success {
+    border-left: 4px solid var(--success-color);
+}
+
+.border-left-danger {
+    border-left: 4px solid var(--danger-color);
+}
+
+.border-left-warning {
+    border-left: 4px solid var(--warning-color);
+}

@@ -1,0 +1,109 @@
+# Mid-Frequency Trading System Configuration
+# Copy this file to config.yaml and modify as needed
+
+system:
+  name: "Mid-Frequency Trading System"
+  version: "1.0.0"
+  timezone: "UTC"
+
+# Market Data Configuration
+data_feed:
+  symbols: ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'TSLA', 'META', 'NVDA', 'NFLX']
+  sources: ['yahoo', 'websocket']
+  update_frequency: 1.0  # seconds
+  historical_days: 30
+
+# Strategy Configuration
+strategies:
+  mean_reversion:
+    symbols: ['AAPL', 'GOOGL', 'MSFT']
+    parameters:
+      lookback_period: 20
+      z_score_threshold: 2.0
+      position_size: 0.1
+      max_positions: 5
+      stop_loss_pct: 0.05
+      take_profit_pct: 0.03
+      
+  momentum:
+    symbols: ['AMZN', 'TSLA', 'META']
+    parameters:
+      lookback_period: 10
+      momentum_threshold: 0.02
+      position_size: 0.1
+      max_positions: 3
+      stop_loss_pct: 0.03
+      take_profit_pct: 0.05
+      
+  arbitrage:
+    symbols: ['NVDA', 'NFLX', 'AMD', 'CRM']
+    parameters:
+      lookback_period: 60
+      z_score_threshold: 2.0
+      position_size: 0.05
+      max_pairs: 5
+      min_correlation: 0.7
+
+# Risk Management Configuration
+risk_management:
+  max_position_size: 100000  # Maximum position size in USD
+  max_portfolio_value: 10000000  # Maximum portfolio value
+  max_drawdown_pct: 0.10  # Maximum drawdown percentage
+  max_correlation: 0.8  # Maximum correlation between positions
+  var_confidence: 0.95  # VaR confidence level
+  var_time_horizon: 1  # VaR time horizon in days
+  initial_cash: 1000000  # Initial cash amount
+
+# Execution Configuration
+execution:
+  venues: ['simulation']  # Available venues: simulation, real_venue_1, real_venue_2
+  transaction_cost: 0.001  # Transaction cost (0.1%)
+  slippage: 0.0005  # Slippage (0.05%)
+  venue_weights:
+    simulation: 1.0
+    # real_venue_1: 0.6
+    # real_venue_2: 0.4
+
+# Backtest Configuration
+backtest:
+  initial_capital: 1000000
+  transaction_cost: 0.001
+  slippage: 0.0005
+  data_frequency: '1min'  # Options: 1min, 5min, 1H, 1D
+
+# Logging Configuration
+logging:
+  level: 'INFO'  # Options: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  file: 'logs/trading_system.log'
+  max_size: '10MB'
+  backup_count: 5
+
+# Web Dashboard Configuration
+web_dashboard:
+  host: '0.0.0.0'
+  port: 8080
+  debug: false
+  update_frequency: 1.0  # seconds
+
+# Database Configuration (Optional)
+database:
+  type: 'sqlite'  # Options: sqlite, postgresql, mysql
+  connection_string: 'data/trading_system.db'
+  
+# Notification Configuration (Optional)
+notifications:
+  enabled: false
+  email:
+    smtp_server: 'smtp.gmail.com'
+    smtp_port: 587
+    username: 'your_email@gmail.com'
+    password: 'your_app_password'
+    recipients: ['recipient@example.com']
+  
+# Advanced Configuration
+advanced:
+  enable_multithreading: true
+  max_concurrent_strategies: 5
+  data_buffer_size: 1000
+  performance_logging_interval: 300  # seconds
