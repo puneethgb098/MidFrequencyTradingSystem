@@ -13,6 +13,16 @@ data_feed:
   update_frequency: 1.0  # seconds
   historical_days: 30
 
+# Market Depth Configuration
+market_depth:
+  # Instrument tokens with Level 5 depth enabled
+  level_5_instruments: []  # Add instrument tokens for full depth (e.g., [256265, 408065])
+  # Default depth level for new instruments (1 or 5)
+  default_depth_level: 1
+  # Redis stream max length for depth data
+  stream_maxlen_level_1: 10000
+  stream_maxlen_level_5: 5000
+
 # Strategy Configuration
 strategies:
   mean_reversion:

@@ -9,9 +9,19 @@ market_data:
       - 256265  # Current month
       - 256521  # Next month
     banknifty_futures:
-      - 260105  # Current month  
+      - 260105  # Current month
       - 260361  # Next month
   subscription_mode: full  # full, ltp, quote
+
+# Market Depth Configuration
+market_depth:
+  # Instruments with Level 5 order book depth enabled
+  level_5_instruments: [256265, 260105]  # Nifty & BankNifty current month
+  # Default depth level for new instruments (1 for Level 1, 5 for Level 5)
+  default_depth_level: 1
+  # Redis stream max length based on depth level
+  stream_maxlen_level_1: 10000
+  stream_maxlen_level_5: 5000
 
 # Strategies
 strategies:
